@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+@layer base {
+  body {
+    background-color: #020617; /* slate-950 */
+    background-image: radial-gradient(circle at center, #0f172a 0%, #020617 100%);
+    @apply text-white min-h-screen overflow-x-hidden;
+  }
+}
+
+@layer components {
+  .millionaire-hex-border {
+    position: relative;
+    clip-path: polygon(5% 0%, 95% 0%, 100% 50%, 95% 100%, 5% 100%, 0% 50%);
+  }
+
+  .answer-button {
+    @apply relative w-full py-4 px-10 border border-blue-500/50 bg-slate-900 
+           hover:bg-blue-900/30 hover:border-yellow-500 transition-all duration-200
+           text-left font-medium text-lg flex items-center rounded-full;
+  }
+
+  .answer-button.selected {
+    @apply bg-blue-800 border-2 border-yellow-500 text-white shadow-[0_0_15px_rgba(59,130,246,0.5)];
+  }
+
+  .answer-button.correct {
+    @apply bg-green-900/40 border-2 border-green-500 text-white animate-pulse;
+  }
+
+  .answer-button.wrong {
+    @apply bg-red-900/40 border-2 border-red-500 text-white;
+  }
+
+  .prize-ladder-container {
+    @apply bg-slate-900/50 border border-blue-900/50 rounded-2xl p-4 flex flex-col justify-between backdrop-blur-md shadow-2xl;
+  }
+
+  .prize-step {
+    @apply flex justify-between items-center px-4 py-1 text-sm font-bold transition-all duration-300;
+  }
+
+  .prize-step.current {
+    @apply bg-yellow-500 text-slate-950 shadow-lg rounded-lg;
+  }
+
+  .prize-step.safe {
+    @apply text-slate-100;
+  }
+
+  .prize-step.normal {
+    @apply text-blue-300 opacity-80;
+  }
+
+  .prize-step.past {
+    @apply text-yellow-500 opacity-100 font-black;
+  }
+
+  .lifeline-btn {
+    @apply w-12 h-12 rounded-full border-2 border-blue-500 bg-blue-950/50 
+           flex items-center justify-center text-sm font-bold text-blue-400 hover:bg-blue-800 transition-colors
+           disabled:opacity-40 disabled:cursor-not-allowed;
+  }
+}
+
+.glow-blue {
+  box-shadow: 0 0 30px rgba(30, 58, 138, 0.4);
+}
+
+.glow-gold {
+  box-shadow: 0 0 30px rgba(234, 179, 8, 0.2);
+}
